@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Personality Scales — A Response-Format Validation Study</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C6553F' stroke-width='2'%3E%3Cpath d='M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2'/%3E%3Crect x='9' y='3' width='6' height='4' rx='1'/%3E%3C/svg%3E">
+
+<meta name="description" content="A research study validating a new expanded response format for personality scales. All responses are anonymous.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Personality Scales — A Response-Format Validation Study">
+<meta property="og:description" content="Help validate a new expanded response format for personality scales. Three brief scales, fully anonymous.">
+<meta property="og:url" content="https://PsychometricLab.github.io/PPS/">
+<meta property="og:image" content="https://PsychometricLab.github.io/ExpandedFormat/og-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Personality Scales — A Response-Format Validation Study">
+<meta name="twitter:description" content="Help validate a new expanded response format for personality scales. Three brief scales, fully anonymous.">
+<script>
+(function(){var v='v='+Math.floor(Date.now()/60000);if(location.search.indexOf(v)===-1){location.replace(location.pathname+'?'+v)}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,ital,wght@6..72,0,200;6..72,0,300;6..72,0,400;6..72,1,300;6..72,1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#14161C;
+  --raise:#1B1E26;
+  --text:#ECE9E1;
+  --muted:#7E828F;
+  --muted-2:#C3C0B8;
+  --line:rgba(255,255,255,.09);
+  --line-2:rgba(255,255,255,.16);
+  --accent:#C6553F;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Inter','Helvetica Neue',Arial,sans-serif;
+}
+html{-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--sans);color:var(--text);background:var(--bg);min-height:100vh;min-height:100svh;line-height:1.6;overflow-anchor:none;touch-action:manipulation}
+#app{overflow-x:hidden;width:100%}
+::selection{background:var(--accent);color:#fff}
+.serif{font-family:var(--serif)}
+
+/* ============ SCREEN SHELL ============ */
+.screen{min-height:100dvh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 28px}
+.screen.entering{animation:screenIn .7s cubic-bezier(.2,.9,.3,1) both}
+@keyframes screenIn{from{opacity:0}to{opacity:1}}
+.wrap{width:100%;max-width:700px}
+
+/* ============ LANDING / INTRO ============ */
+.hero-rule{width:46px;height:2px;background:var(--accent);margin-bottom:28px;transform-origin:left;opacity:0;animation:ruleIn .9s .05s cubic-bezier(.2,.9,.3,1) forwards}
+@keyframes ruleIn{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+.kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:30px;opacity:0;animation:rise .9s .1s cubic-bezier(.2,.9,.3,1) forwards}
+.kicker b{color:var(--text);font-weight:600}
+h1.hero{font-family:var(--serif);font-weight:200;font-size:clamp(46px,7.2vw,88px);line-height:.98;letter-spacing:-.02em;opacity:0;animation:rise 1s .24s cubic-bezier(.2,.9,.3,1) forwards}
+h1.hero .accent-word{color:var(--accent)}
+.lede{margin-top:34px;max-width:54ch;font-family:var(--serif);font-weight:300;font-size:clamp(18px,2.4vw,23px);line-height:1.55;color:var(--muted-2);opacity:0;animation:rise 1s .42s cubic-bezier(.2,.9,.3,1) forwards}
+.lede em{font-style:italic;color:var(--text)}
+.start{margin-top:50px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;opacity:0;animation:rise 1s .6s cubic-bezier(.2,.9,.3,1) forwards}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.go{font-family:var(--sans);font-size:15px;font-weight:500;letter-spacing:.02em;color:#14161C;background:var(--text);border:none;padding:16px 40px;cursor:pointer;transition:transform .3s cubic-bezier(.2,.9,.3,1),background .3s,color .3s;border-radius:2px}
+.go:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+.go:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.hint{font-size:13px;letter-spacing:.03em;color:var(--muted)}
+.hint kbd{font-family:inherit;border:1px solid var(--line-2);border-radius:4px;padding:3px 8px;color:var(--text)}
+
+/* ============ SPLASH (per-scale) ============ */
+.splash .kicker{margin-bottom:26px}
+.splash-nav{margin-top:44px;justify-content:flex-start;gap:28px}
+.demo-back{display:block;margin:18px auto 0;padding-top:8px;text-align:center}
+.big{font-family:var(--serif);font-weight:200;font-size:clamp(28px,5vw,38px);line-height:1.22;letter-spacing:-.01em;opacity:0;animation:rise 1s .22s cubic-bezier(.2,.9,.3,1) forwards}
+.big em{font-style:italic;color:var(--accent);font-weight:300}
+.splash .start{margin-top:44px;animation-delay:.55s}
+
+/* ============ ASSESSMENT ============ */
+.assess{justify-content:flex-start;padding-top:0}
+.bar{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;transition:width .5s cubic-bezier(.2,.9,.3,1);z-index:20}
+.count{width:100%;max-width:1100px;padding:40px 0 0;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);display:flex;align-items:baseline;gap:14px}
+.count .scale-tag{color:var(--accent)}
+.count b{color:var(--text);font-weight:600}
+.stage{width:100%;max-width:1100px;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:26px 0 40px}
+.card{width:100%;max-width:760px}
+.card.in{animation:cin .55s cubic-bezier(.2,.9,.3,1) both}
+.card.inb{animation:cinb .55s cubic-bezier(.2,.9,.3,1) both}
+@keyframes cin{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:none}}
+@keyframes cinb{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:none}}
+
+.stem-box{font-size:clamp(24px,3.6vw,34px);line-height:1.3;min-height:4.2em;display:flex;align-items:flex-end;margin-bottom:30px}
+.stem{font-family:var(--serif);font-weight:300;font-size:inherit;line-height:inherit;letter-spacing:-.01em;color:var(--text);text-wrap:balance}
+
+.opts{display:flex;flex-direction:column;border-top:1px solid var(--line);width:100%}
+.opt{display:block;position:relative;text-align:left;width:100%;background:none;border:none;border-bottom:1px solid var(--line);padding:18px 8px 18px 6px;cursor:pointer;transition:color .25s;-webkit-tap-highlight-color:transparent;user-select:none}
+.opt .t{display:block;font-family:var(--serif);font-weight:300;font-size:clamp(18px,2.3vw,22px);line-height:1.4;color:#C9C6BE;transition:transform .28s cubic-bezier(.2,.9,.3,1),color .25s;text-wrap:balance}
+.opt.on .t{transform:translateX(12px);color:var(--accent)}
+@media (hover:hover){.opt:hover .t{transform:translateX(12px);color:var(--text)}.opt.on:hover .t{color:var(--accent)}}
+.opt:focus-visible{outline:1px solid var(--accent);outline-offset:-1px}
+
+/* Scale 3: options hug their text and are centered (index34 wrapping rules apply via JS) */
+.cardwide{max-width:1100px}
+#ppsOpts{margin:0 auto;width:auto;max-width:100%}
+#ppsOpts .opt{padding-right:10px}
+
+/* SINS — single-item scale */
+.sins-title{font-family:var(--serif);font-weight:300;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.01em;margin-bottom:4px}
+.sins-attrib{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--muted);margin-bottom:26px}
+.sins-prompt{font-family:var(--serif);font-weight:300;font-size:18px;color:var(--muted-2);margin-bottom:6px}
+.sins-statement{font-family:var(--serif);font-weight:300;font-size:clamp(26px,4vw,36px);color:var(--text);letter-spacing:-.01em;margin-bottom:12px}
+.sins-note{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--muted-2);line-height:1.55;margin-bottom:28px;max-width:56ch}
+.sins-row{display:flex;gap:0;justify-content:space-between;align-items:flex-start;max-width:560px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
+.sins-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 2px;border:none;background:transparent;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.sins-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sins-num{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--line-2);font-family:var(--serif);font-weight:300;font-size:20px;color:var(--muted-2);transition:.25s}
+@media (hover:hover){.sins-btn:hover .sins-num{border-color:var(--text);color:var(--text)}}
+.sins-btn.on .sins-num{background:var(--accent);border-color:var(--accent);color:#fff}
+.sins-end{font-family:var(--sans);font-size:11px;letter-spacing:.04em;color:var(--muted);text-align:center;line-height:1.35;max-width:9ch}
+.sins-btn.on .sins-end{color:var(--text)}
+@media (max-width:560px){.sins-num{width:38px;height:38px;font-size:17px}.sins-end{font-size:10px}}
+
+.err{visibility:hidden;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--accent);margin-top:20px;min-height:1.2em}
+.err.visible{visibility:visible}
+.err::before{content:'\2014\2002'}
+
+.nav{display:flex;justify-content:center;align-items:center;gap:28px;margin-top:34px}
+.back{background:none;border:none;color:var(--muted);font-family:var(--sans);font-size:14px;cursor:pointer;padding:8px 0;transition:color .25s}
+.back:hover{color:var(--text)}
+.back::before{content:'\2190\2002'}
+.next{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.02em;color:#14161C;background:var(--text);border:none;padding:13px 34px;cursor:pointer;border-radius:2px;transition:background .3s,color .3s,transform .3s}
+.next:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+.next:focus-visible,.back:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.next::after{content:'\2002\2192'}
+
+/* ============ DEMOGRAPHICS ============ */
+.demo .wrap{max-width:480px}
+.demo-card{border-top:3px solid var(--line-2);padding-top:26px;animation:screenIn .5s ease}
+.demo-card h2{font-family:var(--serif);font-weight:300;font-size:clamp(28px,5vw,38px);letter-spacing:-.01em;margin-bottom:.35rem}
+.demo-sub{font-family:var(--serif);font-style:italic;font-weight:300;font-size:18px;color:var(--muted);line-height:1.55;margin-bottom:34px}
+.demo-field{margin-bottom:26px}
+.demo-field label{display:block;font-family:var(--sans);font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.18em;margin-bottom:8px}
+.demo-field input[type="number"],.demo-field select{width:100%;font-family:var(--serif);font-weight:300;font-size:19px;padding:8px 2px;border:none;border-bottom:1.5px solid var(--line-2);background:transparent;color:var(--text);transition:border-color .2s;outline:none}
+.demo-field input[type="number"]::placeholder{color:var(--muted);font-style:italic}
+.demo-field input[type="number"]:focus,.demo-field select:focus{border-bottom-color:var(--accent)}
+.demo-field select{-webkit-appearance:menulist;appearance:menulist;padding-right:10px}
+.demo-field select option{background:var(--raise);color:var(--text)}
+.demo-field input[type="number"]{-moz-appearance:textfield}
+.demo-field input[type="number"]::-webkit-outer-spin-button,.demo-field input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.yn-row{display:flex;gap:14px;margin-top:6px}
+.yn-btn{font-family:var(--sans);font-size:14px;font-weight:500;letter-spacing:.03em;padding:10px 26px;border:1px solid var(--line-2);border-radius:2px;background:transparent;color:var(--muted);cursor:pointer;transition:.22s;-webkit-tap-highlight-color:transparent}
+.yn-btn:hover{color:var(--text);border-color:var(--text)}
+.yn-btn.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+.yn-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.demo-error{display:none;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--accent);margin-bottom:18px}
+.demo-error::before{content:'\2014\2002'}
+.demo-error.visible{display:block}
+.demo-submit{width:100%;font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.04em;padding:16px;border-radius:2px;border:none;cursor:pointer;color:#14161C;background:var(--text);transition:background .3s,color .3s,transform .3s;margin-top:12px}
+.demo-submit:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+.demo-submit:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ============ THANK YOU ============ */
+.thanks{text-align:center}
+.thanks .stamp{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.thanks h1{font-family:var(--serif);font-weight:200;font-size:clamp(34px,6vw,54px);line-height:1.05;letter-spacing:-.02em;margin-bottom:16px}
+.thanks p{font-family:var(--serif);font-weight:300;font-size:19px;color:var(--muted-2);line-height:1.6;margin-bottom:32px;max-width:44ch;margin-left:auto;margin-right:auto}
+
+/* ============ SUBMIT OVERLAY ============ */
+.submitting-overlay{display:none;position:fixed;inset:0;background:rgba(20,22,28,.94);z-index:1000;align-items:center;justify-content:center;flex-direction:column}
+.submitting-overlay.visible{display:flex}
+.spinner{width:38px;height:38px;border:2px solid var(--line-2);border-top-color:var(--accent);border-radius:50%;animation:spin .75s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner-text{margin-top:16px;font-family:var(--serif);font-style:italic;color:var(--muted);font-size:16px}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:640px){
+  .screen{padding:32px 20px}
+  .opt{padding:15px 26px 15px 2px}
+  .opt .t{font-size:17px}
+  .stem-box{font-size:22px}
+  .count{padding-top:30px}
+  .nav{gap:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0ms!important;transition-duration:.01ms!important}
+  .hero-rule,.kicker,h1.hero,.lede,.start,.big,}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="submitting-overlay" id="submitting"><div class="spinner"></div><div class="spinner-text" id="spinnerText"></div></div>
+<script>
+const GOOGLE_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwBNB72OELh28ZEfEQaTLaqC6co2OHjxpiiUoPNDaRdufa732wqC570op7DNqJgfo7LJA/exec';
+
+// ===================== DATA =====================
+// Scale 1 (standard Likert, 4-point). Scale 2 (standard Likert, 5-point).
+// Scale 3 uses the EXPANDED / EXTENDED response format (Zhang & Savalei, 2016):
+// each item is a set of 5 first-person statements {v: score 0-4, t: text}, shown
+// in a fixed display order. Scoring uses .v, never the display index.
+var TRIPM_ITEMS=[{"id": "MEAN5sensitivetofeelings", "factor": "Meanness", "text": "I am sensitive to the feelings of others."}, {"id": "DIS1problemsatwork", "factor": "Disinhibition", "text": "I have had problems at work because I was irresponsible."}, {"id": "BOLD1bornleader", "factor": "Boldness", "text": "I'm a born leader."}, {"id": "MEAN2notmuchsympathy", "factor": "Meanness", "text": "I don't have much sympathy for people."}, {"id": "BOLD2convincepeople", "factor": "Boldness", "text": "I can convince people to do what I want."}, {"id": "BOLD3dontthinkimtalented", "factor": "Boldness", "text": "I don’t think of myself as talented."}, {"id": "DIS2lostafriendirresponsible", "factor": "Disinhibition", "text": "I have lost a friend because of irresponsible things I've done."}, {"id": "MEAN3seesomeoneinpain", "factor": "Meanness", "text": "It doesn’t bother me to see someone else in pain."}, {"id": "BOLD4functionwell", "factor": "Boldness", "text": "I function well in new situations, even when unprepared."}, {"id": "DIS3lackofselfcontrol", "factor": "Disinhibition", "text": "Others have told me they are concerned about my lack of self-control."}, {"id": "MEAN4sympathisewithothers", "factor": "Meanness", "text": "I sympathize with others’ problems."}, {"id": "BOLD5dontliketotakelead", "factor": "Boldness", "text": "I don’t like to take the lead in groups."}, {"id": "DIS4jumpintothings", "factor": "Disinhibition", "text": "I jump into things without thinking."}, {"id": "MEAN1nopointinworryingabouthurt", "factor": "Meanness", "text": "I don't see any point in worrying if what I do hurts someone else."}, {"id": "BOLD6notgoodatinfluencing", "factor": "Boldness", "text": "I am not very good at influencing people."}, {"id": "DIS5impulsivedecisionslovedones", "factor": "Disinhibition", "text": "My impulsive decisions have caused problems with loved ones."}, {"id": "BOLD7stackupwell", "factor": "Boldness", "text": "I don\u2019t stack up well against most others."}, {"id": "VALID1birthtoahorse", "factor": "Validity", "text": "I gave birth to a horse."}];
+var SRP_ITEMS=[{"id": "SRPLife1rebellious", "factor": "Lifestyle", "text": "I’m a rebellious person."}, {"id": "SRPAntisocial8delinquentgang", "factor": "Antisocial", "text": "I have never been involved in delinquent gang activity."}, {"id": "SRPCallous1pplarewimps", "factor": "Callous", "text": "Most people are wimps."}, {"id": "SOCPOT1hardlycenterattention", "factor": "Social Potency", "text": "I am hardly ever the center of attention."}, {"id": "SRPLife2dangerousforthrill", "factor": "Lifestyle", "text": "I’ve often done something dangerous just for the thrill of it."}, {"id": "SRPAntisocial1trickedgivingmoney", "factor": "Antisocial", "text": "I have tricked someone into giving me money."}, {"id": "SOCPOT2gettingppltotalktome", "factor": "Social Potency", "text": "I have a talent for getting people to talk to me."}, {"id": "VALID2grandpacrack", "factor": "Validity", "text": "My grandpa smokes the finest crack."}, {"id": "SRPAntisocial2assaultsocialworker", "factor": "Antisocial", "text": "I have assaulted a law enforcement official or social worker."}, {"id": "SRPInterpersonal1Pretendedtobesomeone", "factor": "Interpersonal", "text": "I have pretended to be someone else in order to get something."}, {"id": "SRPCallous2Liketoseefights", "factor": "Callous", "text": "I like to see fist-fights."}, {"id": "SOCPOT3doesmostofthetalking", "factor": "Social Potency", "text": "In conversations, I’m the one who does most of the talking."}, {"id": "SRPInterpersonal2kickoutofscamming", "factor": "Interpersonal", "text": "I would get a kick out of ‘scamming’ someone."}, {"id": "SRPInterpersonal3funtopushpeople", "factor": "Interpersonal", "text": "It's fun to see how far you can push people before they get upset."}, {"id": "SRPLife3wildthings", "factor": "Lifestyle", "text": "I enjoy doing wild things."}, {"id": "SRPAntisocial3brokenintobuildings", "factor": "Antisocial", "text": "I have broken into a building or vehicle in order to steal something or vandalize."}, {"id": "SOCPOT4feelsureofmyself", "factor": "Social Potency", "text": "I feel sure of myself when I'm around other people."}, {"id": "SRPCallous3dontbothertocontactfamily", "factor": "Callous", "text": "I don’t bother to keep in touch with my family any more."}, {"id": "SRPlife4rarelyfollowrules", "factor": "Lifestyle", "text": "I rarely follow the rules."}, {"id": "SRPInterpersonal4takeadvantageofothers", "factor": "Interpersonal", "text": "You should take advantage of other people before they do it to you."}, {"id": "SOCPOT5standoutinacrowd", "factor": "Social Potency", "text": "I like to stand out in a crowd."}, {"id": "SRPcallous4coldhearted", "factor": "Callous", "text": "People sometimes say that I’m cold-hearted."}, {"id": "SRPlife5sexwithpeople", "factor": "Lifestyle", "text": "I like to have sex with people I barely know."}, {"id": "SRPcallous5violentsportsandmovies", "factor": "Callous", "text": "I love violent sports and movies."}, {"id": "SRPInterpersonal5pretendtolikesomeone", "factor": "Interpersonal", "text": "Sometimes you have to pretend you like people to get something out of them."}, {"id": "SRPantisocial4convictedofseriouscrime", "factor": "Antisocial", "text": "I was convicted of a serious crime."}, {"id": "SOCPOT6gouptostranger", "factor": "Social Potency", "text": "It’s easy for me to go up to a stranger and introduce myself."}, {"id": "SRPlife6keepgettingintrouble", "factor": "Lifestyle", "text": "I keep getting in trouble for the same things over and over."}, {"id": "SRPantisocial5knifeorgun", "factor": "Antisocial", "text": "Every now and then I carry a weapon (knife or gun) for protection."}, {"id": "SRPInterpersonal6tellingpeoplewhattheywant", "factor": "Interpersonal", "text": "You can get what you want by telling people what they want to hear."}, {"id": "SRPcallous6neverfeelguilty", "factor": "Callous", "text": "I never feel guilty over hurting others."}, {"id": "SOCPOT7lifeoftheparty", "factor": "Social Potency", "text": "I'm hardly ever the \"life of the party.\""}, {"id": "SRPantisocial6threatenedpeople", "factor": "Antisocial", "text": "I have threatened people into giving me money, clothes, or makeup."}, {"id": "SRPinterpersonal7peoplearesuckers", "factor": "Interpersonal", "text": "A lot of people are “suckers” and can easily be fooled."}, {"id": "SRPlife7oftenmouthoff", "factor": "Lifestyle", "text": "I admit that I often “mouth off” without thinking."}, {"id": "SRPcallous7dumpfriends", "factor": "Callous", "text": "I sometimes dump friends that I don’t need any more."}, {"id": "SRPantisocial7hitwithvehicle", "factor": "Antisocial", "text": "I purposely tried to hit someone with the vehicle I was driving."}, {"id": "VALID3zanzibar", "factor": "Validity", "text": "I am a close, personal friend of the Prime Minister of Zanzibar."}];
+var S1_ITEMS=[{"id": "PPSInterpersonal8manipulationnaturally", "factor": "INT", "statements": [{"v": 0, "t": "Manipulation does not come naturally to me."}, {"v": 1, "t": "Manipulation comes slightly naturally to me."}, {"v": 2, "t": "Manipulation comes moderately naturally to me."}, {"v": 3, "t": "Manipulation comes considerably naturally to me."}, {"v": 4, "t": "Manipulation comes completely naturally to me."}], "note": null, "displayNum": 0}, {"id": "PPSAffective11coldunemotional", "factor": "AFF", "statements": [{"v": 0, "t": "I am not a cold and unemotional person."}, {"v": 1, "t": "I am a slightly cold and unemotional person."}, {"v": 2, "t": "I am a moderately cold and unemotional person."}, {"v": 3, "t": "I am a considerably cold and unemotional person."}, {"v": 4, "t": "I am a completely cold and unemotional person."}], "note": null, "displayNum": 1}, {"id": "PPSLifestyle1disregardconsequences", "factor": "LIF", "statements": [{"v": 0, "t": "I don’t disregard possible consequences."}, {"v": 1, "t": "I slightly disregard possible consequences."}, {"v": 2, "t": "I moderately disregard possible consequences."}, {"v": 3, "t": "I considerably disregard possible consequences."}, {"v": 4, "t": "I completely disregard possible consequences."}], "note": null, "displayNum": 2}, {"id": "PPSAggression2threatenpeople", "factor": "ANT", "statements": [{"v": 0, "t": "I have no tendency to threaten people when they cross me."}, {"v": 1, "t": "I have a slight tendency to threaten people when they cross me."}, {"v": 2, "t": "I have a moderate tendency to threaten people when they cross me."}, {"v": 3, "t": "I have a considerable tendency to threaten people when they cross me."}, {"v": 4, "t": "I have a complete tendency to threaten people when they cross me."}], "note": null, "displayNum": 3}, {"id": "PPSInterpersonal2getliketrust", "factor": "INT", "statements": [{"v": 0, "t": "I cannot get people to like me and trust me when they shouldn’t."}, {"v": 1, "t": "To a slight extent, I can get people to like me and trust me when they shouldn’t."}, {"v": 2, "t": "To a moderate extent, I can get people to like me and trust me when they shouldn’t."}, {"v": 3, "t": "To a considerable extent, I can get people to like me and trust me when they shouldn’t."}, {"v": 4, "t": "To a complete extent, I can get people to like me and trust me when they shouldn’t."}], "note": null, "displayNum": 4}, {"id": "PPSLifestyle4disregardtasks", "factor": "LIF", "statements": [{"v": 0, "t": "I don’t disregard tasks I’m expected to take care of."}, {"v": 1, "t": "I slightly disregard tasks I’m expected to take care of."}, {"v": 2, "t": "I moderately disregard tasks I’m expected to take care of."}, {"v": 3, "t": "I considerably disregard tasks I’m expected to take care of."}, {"v": 4, "t": "I completely disregard tasks I’m expected to take care of."}], "note": null, "displayNum": 5}, {"id": "PPSAffective8unaffectedfriendpain", "factor": "AFF", "statements": [{"v": 0, "t": "I don’t feel unaffected by a friend’s emotional pain."}, {"v": 1, "t": "I feel slightly unaffected by a friend’s emotional pain."}, {"v": 2, "t": "I feel moderately unaffected by a friend’s emotional pain."}, {"v": 3, "t": "I feel considerably unaffected by a friend’s emotional pain."}, {"v": 4, "t": "I feel completely unaffected by a friend’s emotional pain."}], "note": null, "displayNum": 6}, {"id": "PPSAggression5blowupquick", "factor": "ANT", "statements": [{"v": 0, "t": "To no extent do I “blow up” in anger before cooling down just as fast."}, {"v": 1, "t": "To a slight extent, I “blow up” in anger before cooling down just as fast."}, {"v": 2, "t": "To a moderate extent, I “blow up” in anger before cooling down just as fast."}, {"v": 3, "t": "To a considerable extent, I “blow up” in anger before cooling down just as fast."}, {"v": 4, "t": "To a complete extent, I “blow up” in anger before cooling down just as fast."}], "note": null, "displayNum": 7}, {"id": "PPSInterpersonal6charmonandoff", "factor": "INT", "statements": [{"v": 0, "t": "I can’t turn my charm on and off like a tap."}, {"v": 1, "t": "To a slight extent, I can turn my charm on and off like a tap."}, {"v": 2, "t": "To a moderate extent, I can turn my charm on and off like a tap."}, {"v": 3, "t": "To a considerable extent, I can turn my charm on and off like a tap."}, {"v": 4, "t": "To a complete extent, I can turn my charm on and off like a tap."}], "note": null, "displayNum": 8}, {"id": "PPSAffective7shallowfeelings", "factor": "AFF", "statements": [{"v": 0, "t": "I don’t have shallow feelings or lack emotional depth."}, {"v": 1, "t": "To a slight extent, I have shallow feelings and lack emotional depth."}, {"v": 2, "t": "To a moderate extent, I have shallow feelings and lack emotional depth."}, {"v": 3, "t": "To a considerable extent, I have shallow feelings and lack emotional depth."}, {"v": 4, "t": "To a complete extent, I have shallow feelings and lack emotional depth."}], "note": null, "displayNum": 9}, {"id": "PPSLifestyle8irresponsibly", "factor": "LIF", "statements": [{"v": 0, "t": "I don’t behave irresponsibly."}, {"v": 1, "t": "I behave slightly irresponsibly."}, {"v": 2, "t": "I behave moderately irresponsibly."}, {"v": 3, "t": "I behave considerably irresponsibly."}, {"v": 4, "t": "I behave completely irresponsibly."}], "note": null, "displayNum": 10}, {"id": "PPSAggression6slaphorhit", "factor": "ANT", "statements": [{"v": 0, "t": "I am not at all likely to slap or hit someone if they provoke me."}, {"v": 1, "t": "I am slightly likely to slap or hit someone if they provoke me."}, {"v": 2, "t": "I am moderately likely to slap or hit someone if they provoke me."}, {"v": 3, "t": "I am considerably likely to slap or hit someone if they provoke me."}, {"v": 4, "t": "I am completely likely to slap or hit someone if they provoke me."}], "note": null, "displayNum": 11}, {"id": "PPSInterpersonal5falsepersona", "factor": "INT", "statements": [{"v": 0, "t": "I cannot adopt a false persona to con others."}, {"v": 1, "t": "I can adopt a slightly false persona to con others."}, {"v": 2, "t": "I can adopt a moderately false persona to con others."}, {"v": 3, "t": "I can adopt a considerably false persona to con others."}, {"v": 4, "t": "I can adopt a completely false persona to con others."}], "note": null, "displayNum": 12}, {"id": "PPSLifestyle9immediatepleasures", "factor": "LIF", "statements": [{"v": 0, "t": "I don’t chase immediate pleasures at the expense of long-term stability."}, {"v": 1, "t": "I chase immediate pleasures to a slight extent, even at the expense of long-term stability."}, {"v": 2, "t": "I chase immediate pleasures to a moderate extent, even at the expense of long-term stability."}, {"v": 3, "t": "I chase immediate pleasures to a considerable extent, even at the expense of long-term stability."}, {"v": 4, "t": "I chase immediate pleasures to a complete extent, even at the expense of long-term stability."}], "note": null, "displayNum": 13}, {"id": "PPSAffective5lackempathy", "factor": "AFF", "statements": [{"v": 0, "t": "I have no lack of empathy."}, {"v": 1, "t": "I have a slight lack of empathy."}, {"v": 2, "t": "I have a moderate lack of empathy."}, {"v": 3, "t": "I have a considerable lack of empathy."}, {"v": 4, "t": "I have a complete lack of empathy."}], "note": null, "displayNum": 14}, {"id": "PPSInterpersonal9talkmyway", "factor": "INT", "statements": [{"v": 0, "t": "I can’t talk my way past almost any person."}, {"v": 1, "t": "To a slight extent, I can talk my way past almost any person."}, {"v": 2, "t": "To a moderate extent, I can talk my way past almost any person."}, {"v": 3, "t": "To a considerable extent, I can talk my way past almost any person."}, {"v": 4, "t": "To a complete extent, I can talk my way past almost any person."}], "note": null, "displayNum": 15}, {"id": "PPSAggression7verbalabusescream", "factor": "ANT", "statements": [{"v": 0, "t": "I have not verbally abused or screamed at others in anger."}, {"v": 1, "t": "To a slight extent, I have verbally abused or screamed at others in anger."}, {"v": 2, "t": "To a moderate extent, I have verbally abused or screamed at others in anger."}, {"v": 3, "t": "To a considerable extent, I have verbally abused or screamed at others in anger."}, {"v": 4, "t": "To a complete extent, I have verbally abused or screamed at others in anger."}], "note": null, "displayNum": 16}, {"id": "PPSAffective12personalresponsibility", "factor": "AFF", "statements": [{"v": 0, "t": "I feel personally responsible if my actions have hurt others."}, {"v": 1, "t": "I feel a slight lack of personal responsibility if my actions have hurt others."}, {"v": 2, "t": "I feel a moderate lack of personal responsibility if my actions have hurt others."}, {"v": 3, "t": "I feel a considerable lack of personal responsibility if my actions have hurt others."}, {"v": 4, "t": "I feel a complete lack of personal responsibility if my actions have hurt others."}], "note": null, "displayNum": 17}, {"id": "PPSInterpersonal1bullshitartist", "factor": "INT", "statements": [{"v": 0, "t": "I’m not a good bullshit artist."}, {"v": 1, "t": "I’m a slightly good bullshit artist."}, {"v": 2, "t": "I’m a moderately good bullshit artist."}, {"v": 3, "t": "I’m a considerably good bullshit artist."}, {"v": 4, "t": "I’m an extremely good bullshit artist."}], "note": null, "displayNum": 18}, {"id": "PPSLifestyle16NEWunreliable", "factor": "LIF", "statements": [{"v": 0, "t": "I am not unreliable."}, {"v": 1, "t": "I am slightly unreliable a lot of the time."}, {"v": 2, "t": "I am moderately unreliable a lot of the time."}, {"v": 3, "t": "I am considerably unreliable a lot of the time."}, {"v": 4, "t": "I am completely unreliable a lot of the time."}], "note": null, "displayNum": 19}, {"id": "PPSAggression9hardholdbackknockout", "factor": "ANT", "statements": [{"v": 0, "t": "I don’t find it hard to hold myself back from knocking some people out."}, {"v": 1, "t": "I find it slightly hard to hold myself back from knocking some people out."}, {"v": 2, "t": "I find it moderately hard to hold myself back from knocking some people out."}, {"v": 3, "t": "I find it considerably hard to hold myself back from knocking some people out."}, {"v": 4, "t": "I find it completely hard to hold myself back from knocking some people out."}], "note": null, "displayNum": 20}, {"id": "PPSInterpersonal10sellicetoeskimo", "factor": "INT", "statements": [{"v": 0, "t": "I’m not someone who could “sell ice to an Eskimo.”"}, {"v": 1, "t": "To a slight extent, I am someone who could “sell ice to an Eskimo.”"}, {"v": 2, "t": "To a moderate extent, I am someone who could “sell ice to an Eskimo.”"}, {"v": 3, "t": "To a considerable extent, I am someone who could “sell ice to an Eskimo.”"}, {"v": 4, "t": "To a complete extent, I am someone who could “sell ice to an Eskimo.”"}], "note": null, "displayNum": 21}, {"id": "PPSAffective10welfareregisters", "factor": "AFF", "statements": [{"v": 0, "t": "Other people’s welfare doesn’t fail to register for me emotionally."}, {"v": 1, "t": "To a slight extent, other people’s welfare fails to register for me emotionally."}, {"v": 2, "t": "To a moderate extent, other people’s welfare fails to register for me emotionally."}, {"v": 3, "t": "To a considerable extent, other people’s welfare fails to register for me emotionally."}, {"v": 4, "t": "To a complete extent, other people’s welfare fails to register for me emotionally."}], "note": null, "displayNum": 22}, {"id": "PPSLifestyle10planahead", "factor": "LIF", "statements": [{"v": 0, "t": "I bother to plan ahead."}, {"v": 1, "t": "To a slight extent, I don’t bother to plan ahead."}, {"v": 2, "t": "To a moderate extent, I don’t bother to plan ahead."}, {"v": 3, "t": "To a considerable extent, I don’t bother to plan ahead."}, {"v": 4, "t": "To a complete extent, I don’t bother to plan ahead."}], "note": null, "displayNum": 23}, {"id": "PPSAggression10usedaggressionplace", "factor": "ANT", "statements": [{"v": 0, "t": "To no extent have I used aggression to put someone back in their place."}, {"v": 1, "t": "To a slight extent, I have used aggression to put someone back in their place."}, {"v": 2, "t": "To a moderate extent, I have used aggression to put someone back in their place."}, {"v": 3, "t": "To a considerable extent, I have used aggression to put someone back in their place."}, {"v": 4, "t": "To a complete extent, I have used aggression to put someone back in their place."}], "note": null, "displayNum": 24}, {"id": "PPSInterpersonal12getothersdowant", "factor": "INT", "statements": [{"v": 0, "t": "I can’t get others to do what I want without them even realizing."}, {"v": 1, "t": "To a slight extent, I can get others to do what I want without them even realizing."}, {"v": 2, "t": "To a moderate extent, I can get others to do what I want without them even realizing."}, {"v": 3, "t": "To a considerable extent, I can get others to do what I want without them even realizing."}, {"v": 4, "t": "To a complete extent, I can get others to do what I want without them even realizing."}], "note": null, "displayNum": 25}, {"id": "PPSLifestyle15NEWrashdecisions", "factor": "LIF", "statements": [{"v": 0, "t": "I don’t make rash decisions that I might regret later."}, {"v": 1, "t": "I make slightly rash decisions that I might regret later."}, {"v": 2, "t": "I make moderately rash decisions that I might regret later."}, {"v": 3, "t": "I make considerably rash decisions that I might regret later."}, {"v": 4, "t": "I make completely rash decisions that I might regret later."}], "note": null, "displayNum": 26}, {"id": "PPSAffective9lackremorse", "factor": "AFF", "statements": [{"v": 0, "t": "I don’t lack remorse."}, {"v": 1, "t": "I lack remorse to a slight extent."}, {"v": 2, "t": "I lack remorse to a moderate extent."}, {"v": 3, "t": "I lack remorse to a considerable extent."}, {"v": 4, "t": "I lack remorse to a complete extent."}], "note": null, "displayNum": 27}, {"id": "PPSAggression12NEWdestroypropertyrage", "factor": "ANT", "statements": [{"v": 0, "t": "I have never destroyed property in moments of rage."}, {"v": 1, "t": "To a slight extent, I have destroyed property in moments of rage."}, {"v": 2, "t": "To a moderate extent, I have destroyed property in moments of rage."}, {"v": 3, "t": "To a considerable extent, I have destroyed property in moments of rage."}, {"v": 4, "t": "To a complete extent, I have destroyed property in moments of rage."}], "note": null, "displayNum": 28}, {"id": "PPSInterpersonal14cheekygetaway", "factor": "INT", "statements": [{"v": 0, "t": "I have no cheeky ability to get away with things that others can’t get away with."}, {"v": 1, "t": "To a slight extent, I have a cheeky ability to get away with things that others can’t."}, {"v": 2, "t": "To a moderate extent, I have a cheeky ability to get away with things that others can’t."}, {"v": 3, "t": "To a considerable extent, I have a cheeky ability to get away with things that others can’t."}, {"v": 4, "t": "To a complete extent, I have a cheeky ability to get away with things that others can’t."}], "note": null, "displayNum": 29}, {"id": "PPSLifestyle11NEWdisregardobligations2others", "factor": "LIF", "statements": [{"v": 0, "t": "I don’t disregard my obligations to others."}, {"v": 1, "t": "I slightly disregard my obligations to others."}, {"v": 2, "t": "I moderately disregard my obligations to others."}, {"v": 3, "t": "I considerably disregard my obligations to others."}, {"v": 4, "t": "I completely disregard my obligations to others."}], "note": null, "displayNum": 30}, {"id": "PPSAggression11enragedwhenblocked", "factor": "ANT", "statements": [{"v": 0, "t": "I don’t become enraged when people try to block me from doing what I want."}, {"v": 1, "t": "I become slightly enraged when people try to block me from doing what I want."}, {"v": 2, "t": "I become moderately enraged when people try to block me from doing what I want."}, {"v": 3, "t": "I become considerably enraged when people try to block me from doing what I want."}, {"v": 4, "t": "I become completely enraged when people try to block me from doing what I want."}], "note": null, "displayNum": 31}, {"id": "PPSInterpersonal4NEWwinningsmile", "factor": "INT", "statements": [{"v": 0, "t": "I can’t hide ulterior motives with a winning smile."}, {"v": 1, "t": "To a slight extent, I can hide ulterior motives with a winning smile."}, {"v": 2, "t": "To a moderate extent, I can hide ulterior motives with a winning smile."}, {"v": 3, "t": "To a considerable extent, I can hide ulterior motives with a winning smile."}, {"v": 4, "t": "To a complete extent, I can hide ulterior motives with a winning smile."}], "note": null, "displayNum": 32}, {"id": "PPSLifestyle18NEWcrazythingsforfun", "factor": "LIF", "statements": [{"v": 0, "t": "I’m not willing to do crazy things for fun if it might cause problems later."}, {"v": 1, "t": "I’m slightly willing to do crazy things for fun, even if it might cause problems later."}, {"v": 2, "t": "I’m moderately willing to do crazy things for fun, even if it might cause problems later."}, {"v": 3, "t": "I’m considerably willing to do crazy things for fun, even if it might cause problems later."}, {"v": 4, "t": "I’m completely willing to do crazy things for fun, even if it might cause problems later."}], "note": null, "displayNum": 33}];
+
+var SINS_DATA={"id":"SINS1","title":"Single Item Narcissism Scale (SINS)","attribution":"S. Konrath et al. (2014)","prompt":"To what extent do you agree with this statement:","statement":"\u201cI am a narcissist.\u201d","note":"Note: The word \u201cnarcissist\u201d means egotistical, self-focused, and vain.","leftLabel":"Not very true of me","rightLabel":"Very true of me","points":7};
+var TRIPM_ANCHORS=["False","Somewhat False","Somewhat True","True"];
+var SRP_ANCHORS=["Disagree Strongly","Disagree Somewhat","Neither Agree nor Disagree","Agree Somewhat","Agree Strongly"];
+var PPS_INSTRUCTION_MAIN="This last scale is the <em>expanded format</em> — <br> Pick the statement that is most accurate.";
+
+// Per-scale splash config
+var SCALE_META=[
+  {tag:'Scale One of Three',   count:TRIPM_ITEMS.length, instr:'Choose the option that best <em>describes you</em>.', preview:TRIPM_ANCHORS},
+  {tag:'Scale Two of Three',   count:TRIPM_ITEMS.length,   instr:'The next scale is a 5 point <em>agree/disagree</em> scale.', preview:SRP_ANCHORS},
+  {tag:'Test Three of Three', count:S1_ITEMS.length,    instr:PPS_INSTRUCTION_MAIN, preview:null}
+];
+
+// === Redirect target after completion ===
+var REDDIT_URL="https://www.reddit.com/r/SampleSize/s/DwHORcZQmN";
+
+// ===================== CONTROLLER =====================
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// Build the ordered screen list: intro -> [splash + scale] x3 -> demographics -> thank you
+var SCREENS=[];
+SCREENS.push({type:'splash',scale:0,section:0});
+TRIPM_ITEMS.forEach(function(it){SCREENS.push({type:'likert',item:it,anchors:TRIPM_ANCHORS,section:0});});
+SCREENS.push({type:'splash',scale:1,section:1});
+SRP_ITEMS.forEach(function(it){SCREENS.push({type:'likert',item:it,anchors:SRP_ANCHORS,section:1});});
+SCREENS.push({type:'splash',scale:2,section:2});
+S1_ITEMS.forEach(function(it){SCREENS.push({type:'pps',item:it,section:2});});
+SCREENS.push({type:'sins'});
+SCREENS.push({type:'demographics'});
+SCREENS.push({type:'thankyou'});
+
+var ANSWERABLE=[];
+SCREENS.forEach(function(s,i){if(s.type==='likert'||s.type==='pps'||s.type==='sins')ANSWERABLE.push(i);});
+var SECTIONS=[[],[],[]];
+SCREENS.forEach(function(s,i){if((s.type==='likert'||s.type==='pps')&&typeof s.section==='number')SECTIONS[s.section].push(i);});
+var THANKYOU_INDEX=SCREENS.length-1;
+var DEMO_INDEX=-1;for(var di=0;di<SCREENS.length;di++){if(SCREENS[di].type==='demographics'){DEMO_INDEX=di;break;}}
+var LAST_ANSWERABLE=ANSWERABLE.length?ANSWERABLE[ANSWERABLE.length-1]:-1;
+
+var VPN_KEYWORDS=['vpn','nord','express','surfshark','cyberghost','private internet','mullvad','proton','pia ','windscribe','tunnelbear','ivpn','hide.me','hotspot shield','ipvanish','purevpn','torguard','astrill','vypr','zenmate','strongvpn','datacenter','hosting','cloud','server','hetzner','digitalocean','ovh','amazon','aws','linode','vultr','choopa','m247','datacamp','psychz','leaseweb','quadranet','cogent','zscaler'];
+var SUBMIT_SECRET='pps_8Kv3nQ7xW2mP';
+function generateToken(rid){var s=SUBMIT_SECRET+':'+rid;var h=0;for(var i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0}return 'tk_'+Math.abs(h).toString(36)}
+
+var state={currentPage:0,responses:{},demoYN:{accurate:null,consent:null},demoFields:{age:'',gender:'',country:''},startTime:null,endTime:null,pageStartTimes:[],pageTimes:[],respondentId:'R'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),ipData:{},slideDir:'fwd'};
+
+(function(){
+  fetch('https://ipapi.co/json/')
+    .then(function(r){if(!r.ok)throw new Error(r.status);return r.json()})
+    .then(function(d){var org=(d.org||'').toLowerCase();state.ipData={ip:d.ip||'',country:d.country_name||'',region:d.region||'',city:d.city||'',isp:d.org||'',is_vpn:VPN_KEYWORDS.some(function(kw){return org.indexOf(kw)!==-1})}})
+    .catch(function(){
+      fetch('https://api.ipapi.is/').then(function(r){return r.json()}).then(function(d){state.ipData={ip:d.ip||'',country:(d.location&&d.location.country)||'',region:(d.location&&d.location.state)||'',city:(d.location&&d.location.city)||'',isp:(d.company&&d.company.name)||'',is_vpn:d.is_vpn||d.is_proxy||d.is_datacenter||d.is_tor||false}}).catch(function(){state.ipData={ip:'unavailable',is_vpn:false}});
+    });
+})();
+
+function slideClass(){return state.slideDir==='bwd'?'inb':'in';}
+
+// Progress within the current scale (index34-style per-test bar)
+function scaleProgress(idx){
+  var sc=SCREENS[idx];var sec=(sc&&typeof sc.section==='number')?sc.section:0;
+  var lst=SECTIONS[sec]||[];var pos=lst.indexOf(idx);
+  if(pos<0)return {sec:sec,pos:0,len:lst.length,pct:0,num:0};
+  return {sec:sec,pos:pos,len:lst.length,pct:Math.round(((pos+1)/lst.length)*100),num:pos+1};
+}
+
+function render(){
+  var app=document.getElementById('app');
+  var idx=state.currentPage;var s=SCREENS[idx];var html='';
+  if(s.type==='splash')html=renderSplash(s);
+  else if(s.type==='likert')html=renderLikert(s);
+  else if(s.type==='pps')html=renderPPSItem(s);
+  else if(s.type==='sins')html=renderSINS();
+  else if(s.type==='demographics')html=renderDemographics();
+  else if(s.type==='thankyou')html=renderThankYou();
+  app.innerHTML=html;attachListeners();
+  if(s.type==='pps'){requestAnimationFrame(sizeOptions);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(SCREENS[state.currentPage]&&SCREENS[state.currentPage].type==='pps')sizeOptions();});}
+  if(s.type==='thankyou'){clearProgress();setTimeout(function(){window.location.href=REDDIT_URL;},1000);}
+  window.scrollTo(0,0);
+  saveProgress();
+}
+
+function renderSplash(s){
+  var m=SCALE_META[s.scale];
+  var back=(state.currentPage>0)?'<button class="back" id="btnBack">Back</button>':'<span></span>';
+  return '<section class="screen splash entering"><div class="wrap">'
+    +'<div class="hero-rule"></div>'
+    +'<div class="kicker"><b>'+esc(m.tag)+'</b> \u00b7 '+m.count+' items</div>'
+    +'<p class="big serif">'+m.instr+'</p>'
+    +'<div class="nav splash-nav">'+back+'<button class="next" id="btnNext">Continue</button></div>'
+    +'</div></section>';
+}
+
+function assessHead(idx){
+  var p=scaleProgress(idx);var m=SCALE_META[p.sec];
+  return '<div class="bar" style="width:'+p.pct+'%"></div>'
+    +'<div class="count"><span class="scale-tag">'+esc(m.tag)+'</span><span><b>'+p.num+'</b> / '+p.len+'</span></div>';
+}
+
+function navRow(){return '<div class="nav"><button class="back" id="btnBack">Back</button><button class="next" id="btnNext">Continue</button></div>';}
+
+function renderLikert(s){
+  var item=s.item,anchors=s.anchors,sel=state.responses[item.id];
+  var opts='';
+  anchors.forEach(function(lbl,i){
+    var on=(sel===i)?' on':'';
+    opts+='<button class="opt'+on+'" data-item="'+item.id+'" data-value="'+i+'" role="radio" aria-checked="'+(sel===i?'true':'false')+'"><span class="t">'+esc(lbl)+'</span></button>';
+  });
+  return '<section class="screen assess">'
+    +assessHead(state.currentPage)
+    +'<div class="stage"><div class="card '+slideClass()+'">'
+    +'<div class="stem-box"><div class="stem serif">'+esc(item.text)+'</div></div>'
+    +'<div class="opts" role="radiogroup">'+opts+'</div>'
+    +'<div class="err" id="itemError">Please choose an option before continuing.</div>'
+    +navRow()
+    +'</div></div></section>';
+}
+
+function renderPPSItem(s){
+  var item=s.item,sel=state.responses[item.id];
+  var opts='';
+  item.statements.forEach(function(st){
+    var on=(sel===st.v)?' on':'';
+    opts+='<button class="opt'+on+'" data-item="'+item.id+'" data-value="'+st.v+'" role="radio" aria-checked="'+(sel===st.v?'true':'false')+'"><span class="t">'+esc(st.t)+'</span></button>';
+  });
+  return '<section class="screen assess">'
+    +assessHead(state.currentPage)
+    +'<div class="stage"><div class="card cardwide '+slideClass()+'">'
+    +'<div class="opts" id="ppsOpts" role="radiogroup">'+opts+'</div>'
+    +'<div class="err" id="itemError">Please choose a statement before continuing.</div>'
+    +navRow()
+    +'</div></div></section>';
+}
+
+function renderSINS(){
+  var sel=state.responses['SINS1'];
+  var btns='';
+  for(var v=1;v<=SINS_DATA.points;v++){
+    var on=(sel===v)?' on':'';
+    var endlbl=(v===1)?SINS_DATA.leftLabel:((v===SINS_DATA.points)?SINS_DATA.rightLabel:'');
+    btns+='<button class="sins-btn'+on+'" data-item="SINS1" data-value="'+v+'" role="radio" aria-checked="'+(sel===v?'true':'false')+'">'
+      +'<span class="sins-num">'+v+'</span>'
+      +(endlbl?'<span class="sins-end">'+esc(endlbl)+'</span>':'')
+      +'</button>';
+  }
+  return '<section class="screen assess sins-screen">'
+    +'<div class="bar" style="width:100%"></div>'
+    +'<div class="count"><span class="scale-tag">One final scale</span></div>'
+    +'<div class="stage"><div class="card '+slideClass()+'" style="max-width:640px">'
+    +'<div class="sins-title serif">'+esc(SINS_DATA.title)+'</div>'
+    +'<div class="sins-attrib">'+esc(SINS_DATA.attribution)+'</div>'
+    +'<div class="sins-prompt">'+esc(SINS_DATA.prompt)+'</div>'
+    +'<div class="sins-statement serif">'+esc(SINS_DATA.statement)+'</div>'
+    +'<div class="sins-note">'+esc(SINS_DATA.note)+'</div>'
+    +'<div class="sins-row">'+btns+'</div>'
+    +'<div class="err" id="itemError">Please choose an option before continuing.</div>'
+    +navRow()
+    +'</div></div></section>';
+}
+
+// ---- index34 wrapping rules (Scale 3 only): options hug text and wrap in unison ----
+function sizeOptions(){
+  var opts=document.getElementById('ppsOpts'); if(!opts)return;
+  var t0=opts.querySelector('.t'); var opt0=opts.querySelector('.opt'); if(!t0)return;
+  var cs=getComputedStyle(t0), ocs=getComputedStyle(opt0);
+  var PAD=Math.ceil(parseFloat(ocs.paddingLeft)+parseFloat(ocs.paddingRight));
+  var lh=Math.round(parseFloat(cs.fontSize)*1.4);
+  var m=sizeOptions._m||(sizeOptions._m=document.createElement('span'));
+  m.style.cssText='position:absolute;left:-99999px;top:0;white-space:nowrap;visibility:hidden';
+  ['fontFamily','fontSize','fontWeight','fontStyle','letterSpacing'].forEach(function(p){m.style[p]=cs[p];});
+  if(!m.parentNode)document.body.appendChild(m);
+  var texts=[].slice.call(opts.querySelectorAll('.t'));
+  var maxText=0;
+  texts.forEach(function(el){m.textContent=el.textContent;if(m.offsetWidth>maxText)maxText=m.offsetWidth;});
+  maxText=Math.ceil(maxText);
+  var oneLine=maxText+PAD+2;
+  var available=window.innerWidth-40;
+  opts.style.width='';
+  if(available>=oneLine){opts.style.width=oneLine+'px';equalize();return;}
+  var linesOf=function(el){return Math.round(el.scrollHeight/lh);};
+  var counts=function(){return texts.map(linesOf);};
+  var isUniform=function(){var c=counts();return Math.min.apply(null,c)===Math.max.apply(null,c);};
+  var allWrapped=function(){return Math.min.apply(null,counts())>=2;};
+  var found=null,mode='u',W;
+  for(W=available;W>=150;W-=6){opts.style.width=W+'px';if(isUniform()){found=W;break;}}
+  if(found===null){mode='w';for(W=available;W>=110;W-=6){opts.style.width=W+'px';if(allWrapped()){found=W;break;}}if(found===null)found=110;}
+  opts.style.width=found+'px';
+  var maxLine=0;
+  texts.forEach(function(el){var r=document.createRange();r.selectNodeContents(el);var rects=r.getClientRects();for(var i=0;i<rects.length;i++)if(rects[i].width>maxLine)maxLine=rects[i].width;});
+  var box=Math.ceil(maxLine)+PAD; opts.style.width=box+'px';
+  var ok=function(){return mode==='u'?isUniform():allWrapped();};
+  var g=0; while(g++<80&&box<found&&!ok()){box+=6;opts.style.width=box+'px';}
+  equalize();
+}
+function equalize(){
+  var o=[].slice.call(document.querySelectorAll('#ppsOpts .opt'));
+  o.forEach(function(e){e.style.height='auto';});
+  var h=0;o.forEach(function(e){if(e.offsetHeight>h)h=e.offsetHeight;});
+  o.forEach(function(e){e.style.height=h+'px';});
+}
+var _rsz;window.addEventListener('resize',function(){clearTimeout(_rsz);_rsz=setTimeout(function(){var s=SCREENS[state.currentPage];if(s&&s.type==='pps')sizeOptions();},120);});
+
+function renderDemographics(){
+  var countries=['Afghanistan','Albania','Algeria','Andorra','Angola','Antigua and Barbuda','Argentina','Armenia','Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bhutan','Bolivia','Bosnia and Herzegovina','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Burundi','Cabo Verde','Cambodia','Cameroon','Canada','Central African Republic','Chad','Chile','China','Colombia','Comoros','Congo (DRC)','Congo (Republic)','Costa Rica','Croatia','Cuba','Cyprus','Czech Republic','Denmark','Djibouti','Dominica','Dominican Republic','Ecuador','Egypt','El Salvador','Equatorial Guinea','Eritrea','Estonia','Eswatini','Ethiopia','Fiji','Finland','France','Gabon','Gambia','Georgia','Germany','Ghana','Greece','Grenada','Guatemala','Guinea','Guinea-Bissau','Guyana','Haiti','Honduras','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Israel','Italy','Ivory Coast','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Kiribati','Kosovo','Kuwait','Kyrgyzstan','Laos','Latvia','Lebanon','Lesotho','Liberia','Libya','Liechtenstein','Lithuania','Luxembourg','Madagascar','Malawi','Malaysia','Maldives','Mali','Malta','Marshall Islands','Mauritania','Mauritius','Mexico','Micronesia','Moldova','Monaco','Mongolia','Montenegro','Morocco','Mozambique','Myanmar','Namibia','Nauru','Nepal','Netherlands','New Zealand','Nicaragua','Niger','Nigeria','North Korea','North Macedonia','Norway','Oman','Pakistan','Palau','Palestine','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Poland','Portugal','Qatar','Romania','Russia','Rwanda','Saint Kitts and Nevis','Saint Lucia','Saint Vincent and the Grenadines','Samoa','San Marino','Sao Tome and Principe','Saudi Arabia','Senegal','Serbia','Seychelles','Sierra Leone','Singapore','Slovakia','Slovenia','Solomon Islands','Somalia','South Africa','South Korea','South Sudan','Spain','Sri Lanka','Sudan','Suriname','Sweden','Switzerland','Syria','Taiwan','Tajikistan','Tanzania','Thailand','Timor-Leste','Togo','Tonga','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Tuvalu','Uganda','Ukraine','United Arab Emirates','United Kingdom','United States','Uruguay','Uzbekistan','Vanuatu','Vatican City','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe'];
+  var csel=state.demoFields.country||'';
+  var opts='<option value=""'+(csel===''?' selected':'')+'>Select your country\u2026</option>';
+  countries.forEach(function(c){opts+='<option value="'+c+'"'+(csel===c?' selected':'')+'>'+c+'</option>'});
+  var ynA=state.demoYN.accurate,ynC=state.demoYN.consent;
+  function ynBtn(grp,val){var cur=(grp==='accurate'?ynA:ynC);var on=(cur===val)?' selected':'';return '<button type="button" class="yn-btn'+on+'" data-yn="'+grp+'" data-val="'+val+'">'+(val==='YES'?'Yes':'No')+'</button>';}
+  var gsel=state.demoFields.gender||'';var genders=['Male','Female','Non-binary','Other','Prefer not to say'];var gopts='<option value=""'+(gsel===''?' selected':'')+'>Select your gender\u2026</option>';genders.forEach(function(g){gopts+='<option value="'+g+'"'+(gsel===g?' selected':'')+'>'+g+'</option>'});
+  var html='<section class="screen demo"><div class="wrap">';
+  html+='<div class="demo-card">';
+  html+='<h2 class="serif">A few details</h2>';
+  html+='<p class="demo-sub">Just a couple of quick details before your responses are filed.</p>';
+  html+='<div class="demo-error" id="demoError"></div>';
+  html+='<div class="demo-field"><label>Age</label><input type="number" id="demoAge" min="13" max="120" placeholder="Enter your age" value="'+esc(state.demoFields.age||'')+'"></div>';
+  html+='<div class="demo-field"><label>Gender</label><select id="demoGender">'+gopts+'</select></div>';
+  html+='<div class="demo-field"><label>Country</label><select id="demoCountry">'+opts+'</select></div>';
+  html+='<div class="demo-field"><label>Were your answers accurate?</label><div class="yn-row">'+ynBtn('accurate','YES')+ynBtn('accurate','NO')+'</div></div>';
+  html+='<div class="demo-field"><label>Do you consent to your responses being used for this study?</label><div class="yn-row">'+ynBtn('consent','YES')+ynBtn('consent','NO')+'</div></div>';
+  html+='<button class="demo-submit" id="btnDemoSubmit">Submit</button>';
+  html+='<button class="back demo-back" id="btnBack">Back</button>';
+  html+='</div></div></section>';
+  return html;
+}
+
+function renderThankYou(){
+  return '<section class="screen thanks entering"><div class="wrap">'
+    +'<div class="stamp">Response Recorded</div>'
+    +'<h1 class="serif">Thank you for taking part.</h1>'
+    +'<p>Your responses have been filed. We\u2019d love to hear what you thought \u2014 you\u2019ll be redirected in a moment.</p>'
+    +'<div class="start" style="justify-content:center;animation:none;opacity:1"><button class="go" id="btnContinue">Continue</button></div>'
+    +'</div></section>';
+}
+
+// ---- Navigation ----
+function recordPageTime(){var st=state.pageStartTimes[state.currentPage];if(st)state.pageTimes[state.currentPage]=Math.round((Date.now()-st)/100)/10;state.pageStartTimes[state.currentPage]=Date.now();}
+function showItemError(msg){var err=document.getElementById('itemError');if(err){if(msg)err.textContent=msg;err.classList.add('visible');}}
+
+function currentResponseId(s){
+  if(s.type==='likert'||s.type==='pps')return s.item.id;
+  if(s.type==='sins')return 'SINS1';
+  return null;
+}
+
+function goNext(){
+  var idx=state.currentPage;var s=SCREENS[idx];
+  var rid=currentResponseId(s);
+  if(rid!==null && state.responses[rid]===undefined){showItemError();return;}
+  if(!state.startTime)state.startTime=Date.now();
+  recordPageTime();
+  if(idx===LAST_ANSWERABLE && !state.endTime)state.endTime=Date.now();
+  state.slideDir='fwd';
+  state.currentPage++;
+  state.pageStartTimes[state.currentPage]=Date.now();
+  render();
+}
+function goBack(){
+  if(state.currentPage<=0)return;
+  recordPageTime();
+  state.slideDir='bwd';
+  state.currentPage--;
+  state.pageStartTimes[state.currentPage]=Date.now();
+  render();
+}
+
+function attachListeners(){
+  var bs=document.getElementById('btnStart');
+  if(bs)bs.addEventListener('click',function(){goNext();});
+  var bn=document.getElementById('btnNext');
+  if(bn)bn.addEventListener('click',function(){goNext();});
+  var bb=document.getElementById('btnBack');
+  if(bb)bb.addEventListener('click',function(){goBack();});
+  var bds=document.getElementById('btnDemoSubmit');
+  if(bds)bds.addEventListener('click',function(){submitFinal();});
+  var bcont=document.getElementById('btnContinue');
+  if(bcont)bcont.addEventListener('click',function(){window.location.href=REDDIT_URL;});
+
+  var demoAge=document.getElementById('demoAge');
+  if(demoAge)demoAge.addEventListener('input',function(){state.demoFields.age=demoAge.value;saveProgress();var e=document.getElementById('demoError');if(e)e.classList.remove('visible')});
+  var demoCountry=document.getElementById('demoCountry');
+  if(demoCountry)demoCountry.addEventListener('change',function(){state.demoFields.country=demoCountry.value;saveProgress();var e=document.getElementById('demoError');if(e)e.classList.remove('visible')});
+  var dg=document.getElementById('demoGender');
+  if(dg)dg.addEventListener('change',function(){state.demoFields.gender=dg.value;saveProgress();var e=document.getElementById('demoError');if(e)e.classList.remove('visible')});
+
+  document.querySelectorAll('.yn-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var grp=btn.getAttribute('data-yn'),val=btn.getAttribute('data-val');
+      state.demoYN[grp]=val;
+      document.querySelectorAll('.yn-btn[data-yn="'+grp+'"]').forEach(function(o){o.classList.toggle('selected',o===btn);});
+      saveProgress();
+      var e=document.getElementById('demoError');if(e)e.classList.remove('visible');
+    });
+  });
+
+  // selectable option buttons
+  document.querySelectorAll('.opt, .sins-btn').forEach(function(opt){
+    opt.addEventListener('click',function(){
+      var itemId=opt.dataset.item,value=parseInt(opt.dataset.value);
+      if(state.responses[itemId]===value){
+        delete state.responses[itemId];
+        opt.classList.remove('on');opt.setAttribute('aria-checked','false');
+        saveProgress();return;
+      }
+      state.responses[itemId]=value;
+      document.querySelectorAll('.opt[data-item="'+itemId+'"], .sins-btn[data-item="'+itemId+'"]').forEach(function(o){o.classList.remove('on');o.setAttribute('aria-checked','false');});
+      opt.classList.add('on');opt.setAttribute('aria-checked','true');
+      var err=document.getElementById('itemError');if(err)err.classList.remove('visible');
+      saveProgress();
+      if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
+    });
+    opt.addEventListener('touchend',function(){try{if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();}catch(e){}},{passive:true});
+  });
+}
+
+// ---- Keyboard: number keys pick, Enter advances, ArrowLeft goes back ----
+document.addEventListener('keydown',function(e){
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  var s=SCREENS[state.currentPage];if(!s)return;
+  var tag=(e.target&&e.target.tagName)||'';
+  if(tag==='INPUT'||tag==='SELECT'||tag==='TEXTAREA')return;
+  if((s.type==='likert'||s.type==='pps'||s.type==='sins')&&e.key>='1'&&e.key<='9'){
+    var n=parseInt(e.key)-1;var opts=document.querySelectorAll('.opt, .sins-btn');
+    if(opts[n]){e.preventDefault();opts[n].click();}
+    return;
+  }
+  if(e.key==='ArrowLeft'){e.preventDefault();goBack();return;}
+  if(e.key==='Enter'&&!e.shiftKey){
+    if(tag==='BUTTON')return;
+    var ids=['btnStart','btnNext','btnDemoSubmit','btnContinue'];
+    for(var i=0;i<ids.length;i++){var b=document.getElementById(ids[i]);if(b){e.preventDefault();b.click();return;}}
+  }
+});
+
+// ---- Swipe navigation (mobile): left = forward (gated), right = back ----
+(function(){
+  var sx=0,sy=0,st=0,tracking=false;
+  var SWIPE_TYPES={likert:1,pps:1,sins:1};
+  function canSwipe(){var s=SCREENS[state.currentPage];if(window.visualViewport&&window.visualViewport.scale>1.01)return false;return !!(s&&SWIPE_TYPES[s.type]);}
+  document.addEventListener('touchstart',function(e){
+    if(e.touches.length!==1){tracking=false;return;}
+    var t=e.touches[0];sx=t.clientX;sy=t.clientY;st=Date.now();tracking=true;
+  },{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(!tracking)return;tracking=false;
+    if(!canSwipe())return;
+    var t=e.changedTouches&&e.changedTouches[0];if(!t)return;
+    var dx=t.clientX-sx,dy=t.clientY-sy,dt=Date.now()-st;
+    var adx=Math.abs(dx),ady=Math.abs(dy);
+    if(adx<60)return;
+    if(adx<ady*1.5)return;
+    if(dt>800)return;
+    if(dx<0)goNext();else goBack();
+  },{passive:true});
+})();
+
+// ---- Submission ----
+function submitToSheet(payload,callback){
+  if(!GOOGLE_SCRIPT_URL||GOOGLE_SCRIPT_URL==='YOUR_GOOGLE_SCRIPT_URL_HERE'){callback();return;}
+  try{
+    var iframe=document.createElement('iframe');iframe.name='sf_'+Date.now();iframe.style.display='none';document.body.appendChild(iframe);
+    var form=document.createElement('form');form.method='POST';form.action=GOOGLE_SCRIPT_URL;form.target=iframe.name;form.style.display='none';
+    var input=document.createElement('input');input.type='hidden';input.name='payload';input.value=JSON.stringify(payload);
+    form.appendChild(input);document.body.appendChild(form);form.submit();
+    setTimeout(function(){try{document.body.removeChild(form);document.body.removeChild(iframe)}catch(e){}callback()},2000);
+  }catch(err){callback();}
+}
+
+function buildPayload(demos){
+  var p={};
+  p.timestamp=new Date().toISOString();
+  p.respondent_id=state.respondentId;
+  p.section='complete';
+  var tt=(state.endTime&&state.startTime)?Math.round((state.endTime-state.startTime)/100)/10:0;
+  p.total_time_seconds=tt;
+  p.ip_address=state.ipData.ip||'';
+  p.ip_country=state.ipData.country||'';
+  p.ip_city=state.ipData.city||'';
+  p.isp=state.ipData.isp||'';
+  p.is_vpn_or_proxy=state.ipData.is_vpn?'YES':'NO';
+  p.demo_age=demos&&demos.age!==undefined?demos.age:'';
+  p.demo_gender=demos?demos.gender||'':'';
+  p.demo_country=demos?demos.country||'':'';
+  p.demo_accurate=demos?demos.accurate||'':'';
+  p.demo_consent=demos?demos.consent||'':'';
+  // Scale 1 (Triarchic) in test order
+  TRIPM_ITEMS.forEach(function(it){p[it.id]=state.responses[it.id]!==undefined?state.responses[it.id]:'';});
+  // Scale 2 (SRP) in test order
+  SRP_ITEMS.forEach(function(it){p[it.id]=state.responses[it.id]!==undefined?state.responses[it.id]:'';});
+  // Scale 3 (extended format) grouped by factor, test order within factor
+  ['INT','AFF','LIF','ANT'].forEach(function(f){
+    S1_ITEMS.forEach(function(it){if(it.factor===f)p[it.id]=state.responses[it.id]!==undefined?state.responses[it.id]:'';});
+  });
+  // Scale 4 (SINS), 1-7
+  p['SINS1']=state.responses['SINS1']!==undefined?state.responses['SINS1']:'';
+  // Per-item time columns, in overall test order
+  ANSWERABLE.forEach(function(si){
+    var s=SCREENS[si];var id=(s.type==='sins')?'SINS1':s.item.id;
+    p['Time'+id]=state.pageTimes[si]||0;
+  });
+  p.auth_token=generateToken(state.respondentId);
+  return p;
+}
+
+function submitFinal(){
+  var ageEl=document.getElementById('demoAge');
+  var genderEl=document.getElementById('demoGender');
+  var countryEl=document.getElementById('demoCountry');
+  var age=ageEl?ageEl.value.trim():'';
+  var gender=genderEl?genderEl.value:'';
+  var country=countryEl?countryEl.value:'';
+  var accurate=state.demoYN.accurate;
+  var consent=state.demoYN.consent;
+  var errEl=document.getElementById('demoError');
+  if(!age||isNaN(parseInt(age))||parseInt(age)<13||parseInt(age)>120){if(errEl){errEl.textContent='Please enter a valid age (13\u2013120).';errEl.classList.add('visible')}return;}
+  if(!gender){if(errEl){errEl.textContent='Please select your gender.';errEl.classList.add('visible')}return;}
+  if(!country){if(errEl){errEl.textContent='Please select your country.';errEl.classList.add('visible')}return;}
+  if(!accurate){if(errEl){errEl.textContent='Please answer whether your answers were accurate.';errEl.classList.add('visible')}return;}
+  if(!consent){if(errEl){errEl.textContent='Please answer the consent question.';errEl.classList.add('visible')}return;}
+  if(errEl)errEl.classList.remove('visible');
+  var overlay=document.getElementById('submitting');
+  var spin=document.getElementById('spinnerText');if(spin)spin.textContent='Submitting your responses\u2026';
+  if(overlay)overlay.classList.add('visible');
+  var payload=buildPayload({age:parseInt(age),gender:gender,country:country,accurate:accurate,consent:consent});
+  submitToSheet(payload,function(){
+    if(overlay)overlay.classList.remove('visible');
+    state.slideDir='fwd';
+    state.currentPage=THANKYOU_INDEX;
+    render();
+  });
+}
+
+// ---- Silent progress saving (survives reloads / tab eviction) ----
+var SAVE_KEY='pps_progress_v2';
+var SAVE_TTL=12*60*60*1000;
+function saveProgress(){
+  try{
+    var sc=SCREENS[state.currentPage];
+    if(!sc||sc.type==='thankyou')return;
+    if(state.currentPage<=0)return;
+    localStorage.setItem(SAVE_KEY,JSON.stringify({
+      t:Date.now(), currentPage:state.currentPage, responses:state.responses,
+      demoYN:state.demoYN, demoFields:state.demoFields, startTime:state.startTime,
+      endTime:state.endTime, pageTimes:state.pageTimes, pageStartTimes:state.pageStartTimes,
+      respondentId:state.respondentId
+    }));
+  }catch(e){}
+}
+function clearProgress(){try{localStorage.removeItem(SAVE_KEY);}catch(e){}}
+function restoreProgress(){
+  try{
+    var raw=localStorage.getItem(SAVE_KEY); if(!raw)return false;
+    var b=JSON.parse(raw); if(!b||typeof b.currentPage!=='number')return false;
+    if(SAVE_TTL&&b.t&&(Date.now()-b.t)>SAVE_TTL){clearProgress();return false;}
+    if(b.currentPage<=0||b.currentPage>=THANKYOU_INDEX){clearProgress();return false;}
+    state.currentPage=b.currentPage;
+    state.responses=b.responses||{};
+    state.demoYN=b.demoYN||{accurate:null,consent:null};
+    state.demoFields=b.demoFields||{age:'',gender:'',country:''};
+    state.startTime=b.startTime||null;
+    state.endTime=b.endTime||null;
+    state.pageTimes=b.pageTimes||[];
+    state.pageStartTimes=b.pageStartTimes||[];
+    if(b.respondentId)state.respondentId=b.respondentId;
+    state.pageStartTimes[state.currentPage]=Date.now();
+    return true;
+  }catch(e){return false;}
+}
+window.addEventListener('pagehide',saveProgress);
+window.addEventListener('beforeunload',saveProgress);
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')saveProgress();});
+
+function boot(){restoreProgress();render();}
+// Hold the very first paint until webfonts are ready, so the opening screen
+// doesn't visibly reflow when Newsreader/Inter swap in. Fallback after 2s.
+if(document.fonts&&document.fonts.ready){
+  var _booted=false;
+  var _go=function(){if(_booted)return;_booted=true;boot();};
+  document.fonts.ready.then(_go);
+  setTimeout(_go,2000);
+}else{
+  boot();
+}
+</script>
+</body></html>
