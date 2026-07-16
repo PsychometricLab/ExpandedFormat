@@ -14,7 +14,7 @@
 <meta property="og:title" content="Personality Scales — A Response-Format Validation Study">
 <meta property="og:description" content="Help validate a new expanded response format for personality scales. Three brief scales, fully anonymous.">
 <meta property="og:url" content="https://PsychometricLab.github.io/PPS/">
-<meta property="og:image" content="https://PsychometricLab.github.io/ExpandedFormat/og-preview.jpg">
+<meta property="og:image" content="https://PsychometricLab.github.io/ExpandedFormat/og-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -51,6 +51,17 @@ body{font-family:var(--sans);color:var(--text);background:var(--bg);min-height:1
 .screen.entering{animation:screenIn .7s cubic-bezier(.2,.9,.3,1) both}
 @keyframes screenIn{from{opacity:0}to{opacity:1}}
 .wrap{width:100%;max-width:700px}
+
+/* ============ OPENING TITLE CARD ============ */
+.landing{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--bg);padding:28px;transition:opacity .7s cubic-bezier(.2,.9,.3,1)}
+.landing.hide{opacity:0;pointer-events:none}
+.landing-inner{max-width:900px}
+.landing-line{font-family:var(--serif);font-weight:400;font-size:clamp(34px,6.6vw,58px);line-height:1.12;letter-spacing:-.005em;opacity:0;transform:translateY(14px)}
+.landing-line1{color:var(--text)}
+.landing-line2{color:var(--accent)}
+.landing.play .landing-line1{animation:landIn .6s cubic-bezier(.2,.9,.3,1) forwards}
+.landing.play .landing-line2{animation:landIn .6s .1s cubic-bezier(.2,.9,.3,1) forwards}
+@keyframes landIn{to{opacity:1;transform:none}}
 
 /* ============ LANDING / INTRO ============ */
 .hero-rule{width:46px;height:2px;background:var(--accent);margin-bottom:28px;transform-origin:left;opacity:0;animation:ruleIn .9s .05s cubic-bezier(.2,.9,.3,1) forwards}
@@ -166,6 +177,15 @@ h1.hero .accent-word{color:var(--accent)}
 .thanks h1{font-family:var(--serif);font-weight:200;font-size:clamp(34px,6vw,54px);line-height:1.05;letter-spacing:-.02em;margin-bottom:16px}
 .thanks p{font-family:var(--serif);font-weight:300;font-size:19px;color:var(--muted-2);line-height:1.6;margin-bottom:32px;max-width:44ch;margin-left:auto;margin-right:auto}
 
+/* ============ DEBRIEF (final page) ============ */
+.debrief-screen{justify-content:center}
+.debrief-body{max-width:62ch;opacity:0;animation:rise 1s .22s cubic-bezier(.2,.9,.3,1) forwards}
+.debrief-body p{font-family:var(--serif);font-weight:300;font-size:clamp(18px,2.3vw,22px);line-height:1.62;color:var(--muted-2);margin-bottom:26px}
+.debrief-body p:last-child{margin-bottom:0}
+.debrief-readmore{color:var(--muted)}
+.debrief-body a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(198,85,63,.4);word-break:break-word;transition:border-color .3s}
+.debrief-body a:hover{border-bottom-color:var(--accent)}
+
 /* ============ SUBMIT OVERLAY ============ */
 .submitting-overlay{display:none;position:fixed;inset:0;background:rgba(20,22,28,.94);z-index:1000;align-items:center;justify-content:center;flex-direction:column}
 .submitting-overlay.visible{display:flex}
@@ -188,6 +208,7 @@ h1.hero .accent-word{color:var(--accent)}
 </style>
 </head>
 <body>
+<div id="landing" class="landing"><div class="landing-inner"><div class="landing-line landing-line1 serif">a slightly unusual</div><div class="landing-line landing-line2 serif">personality test</div></div></div>
 <div id="app"></div>
 <div class="submitting-overlay" id="submitting"><div class="spinner"></div><div class="spinner-text" id="spinnerText"></div></div>
 <script>
@@ -214,9 +235,6 @@ var SCALE_META=[
   {tag:'Test Three of Three', count:S1_ITEMS.length,    instr:PPS_INSTRUCTION_MAIN, preview:null}
 ];
 
-// === Redirect target after completion ===
-var REDDIT_URL="https://www.reddit.com/r/SampleSize/s/gmuSysoHzH";
-
 // ===================== CONTROLLER =====================
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
@@ -230,13 +248,13 @@ SCREENS.push({type:'splash',scale:2,section:2});
 S1_ITEMS.forEach(function(it){SCREENS.push({type:'pps',item:it,section:2});});
 SCREENS.push({type:'sins'});
 SCREENS.push({type:'demographics'});
-SCREENS.push({type:'thankyou'});
+SCREENS.push({type:'debrief'});
 
 var ANSWERABLE=[];
 SCREENS.forEach(function(s,i){if(s.type==='likert'||s.type==='pps'||s.type==='sins')ANSWERABLE.push(i);});
 var SECTIONS=[[],[],[]];
 SCREENS.forEach(function(s,i){if((s.type==='likert'||s.type==='pps')&&typeof s.section==='number')SECTIONS[s.section].push(i);});
-var THANKYOU_INDEX=SCREENS.length-1;
+var DEBRIEF_INDEX=-1;for(var bi=0;bi<SCREENS.length;bi++){if(SCREENS[bi].type==='debrief'){DEBRIEF_INDEX=bi;break;}}
 var DEMO_INDEX=-1;for(var di=0;di<SCREENS.length;di++){if(SCREENS[di].type==='demographics'){DEMO_INDEX=di;break;}}
 var LAST_ANSWERABLE=ANSWERABLE.length?ANSWERABLE[ANSWERABLE.length-1]:-1;
 
@@ -273,10 +291,10 @@ function render(){
   else if(s.type==='pps')html=renderPPSItem(s);
   else if(s.type==='sins')html=renderSINS();
   else if(s.type==='demographics')html=renderDemographics();
-  else if(s.type==='thankyou')html=renderThankYou();
+  else if(s.type==='debrief')html=renderDebrief();
   app.innerHTML=html;attachListeners();
   if(s.type==='pps'){requestAnimationFrame(sizeOptions);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){if(SCREENS[state.currentPage]&&SCREENS[state.currentPage].type==='pps')sizeOptions();});}
-  if(s.type==='thankyou'){clearProgress();setTimeout(function(){window.location.href=REDDIT_URL;},1000);}
+  if(s.type==='debrief'){clearProgress();}
   window.scrollTo(0,0);
   saveProgress();
 }
@@ -425,12 +443,14 @@ function renderDemographics(){
   return html;
 }
 
-function renderThankYou(){
-  return '<section class="screen thanks entering"><div class="wrap">'
-    +'<div class="stamp">Response Recorded</div>'
-    +'<h1 class="serif">Thank you for taking part.</h1>'
-    +'<p>Your responses have been filed. We\u2019d love to hear what you thought \u2014 you\u2019ll be redirected in a moment.</p>'
-    +'<div class="start" style="justify-content:center;animation:none;opacity:1"><button class="go" id="btnContinue">Continue</button></div>'
+function renderDebrief(){
+  return '<section class="screen debrief-screen entering"><div class="wrap">'
+    +'<div class="hero-rule"></div>'
+    +'<div class="kicker"><b>About this study</b></div>'
+    +'<div class="debrief-body">'
+    +'<p>Zhang &amp; Savalei (2016) developed an expanded scale format as an alternative to traditional Likert agree/disagree scales for psychological tests. It replaces agree/disagree options with a set of full-sentence response options. Scales that use the expanded format design have proven to have superior psychometric properties to the traditional format. The purpose of this study is to replicate these results.</p>'
+    +'<p class="debrief-readmore">Read more here:<br><a href="https://journals.sagepub.com/doi/full/10.1177/0013164415596421" target="_blank" rel="noopener noreferrer">https://journals.sagepub.com/doi/full/10.1177/0013164415596421</a></p>'
+    +'</div>'
     +'</div></section>';
 }
 
@@ -474,8 +494,6 @@ function attachListeners(){
   if(bb)bb.addEventListener('click',function(){goBack();});
   var bds=document.getElementById('btnDemoSubmit');
   if(bds)bds.addEventListener('click',function(){submitFinal();});
-  var bcont=document.getElementById('btnContinue');
-  if(bcont)bcont.addEventListener('click',function(){window.location.href=REDDIT_URL;});
 
   var demoAge=document.getElementById('demoAge');
   if(demoAge)demoAge.addEventListener('input',function(){state.demoFields.age=demoAge.value;saveProgress();var e=document.getElementById('demoError');if(e)e.classList.remove('visible')});
@@ -528,7 +546,7 @@ document.addEventListener('keydown',function(e){
   if(e.key==='ArrowLeft'){e.preventDefault();goBack();return;}
   if(e.key==='Enter'&&!e.shiftKey){
     if(tag==='BUTTON')return;
-    var ids=['btnStart','btnNext','btnDemoSubmit','btnContinue'];
+    var ids=['btnStart','btnNext','btnDemoSubmit'];
     for(var i=0;i<ids.length;i++){var b=document.getElementById(ids[i]);if(b){e.preventDefault();b.click();return;}}
   }
 });
@@ -626,7 +644,7 @@ function submitFinal(){
   submitToSheet(payload,function(){
     if(overlay)overlay.classList.remove('visible');
     state.slideDir='fwd';
-    state.currentPage=THANKYOU_INDEX;
+    state.currentPage=DEBRIEF_INDEX;
     render();
   });
 }
@@ -637,7 +655,7 @@ var SAVE_TTL=12*60*60*1000;
 function saveProgress(){
   try{
     var sc=SCREENS[state.currentPage];
-    if(!sc||sc.type==='thankyou')return;
+    if(!sc||sc.type==='debrief')return;
     if(state.currentPage<=0)return;
     localStorage.setItem(SAVE_KEY,JSON.stringify({
       t:Date.now(), currentPage:state.currentPage, responses:state.responses,
@@ -653,7 +671,7 @@ function restoreProgress(){
     var raw=localStorage.getItem(SAVE_KEY); if(!raw)return false;
     var b=JSON.parse(raw); if(!b||typeof b.currentPage!=='number')return false;
     if(SAVE_TTL&&b.t&&(Date.now()-b.t)>SAVE_TTL){clearProgress();return false;}
-    if(b.currentPage<=0||b.currentPage>=THANKYOU_INDEX){clearProgress();return false;}
+    if(b.currentPage<=0||b.currentPage>=DEBRIEF_INDEX){clearProgress();return false;}
     state.currentPage=b.currentPage;
     state.responses=b.responses||{};
     state.demoYN=b.demoYN||{accurate:null,consent:null};
@@ -671,7 +689,30 @@ window.addEventListener('pagehide',saveProgress);
 window.addEventListener('beforeunload',saveProgress);
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')saveProgress();});
 
-function boot(){restoreProgress();render();}
+// Opening title card: shows for ~1s, then smoothly cross-fades into the first
+// splash screen (whose own entrance animation plays as the card fades out).
+function playLanding(){
+  var el=document.getElementById('landing');
+  if(!el){render();return;}
+  requestAnimationFrame(function(){el.classList.add('play');});
+  setTimeout(function(){
+    render();
+    el.classList.add('hide');
+    var done=function(){if(el&&el.parentNode)el.parentNode.removeChild(el);};
+    el.addEventListener('transitionend',done,{once:true});
+    setTimeout(done,900);
+  },1000);
+}
+function boot(){
+  var restored=restoreProgress();
+  var el=document.getElementById('landing');
+  if(!restored && state.currentPage===0){
+    playLanding();
+  }else{
+    if(el&&el.parentNode)el.parentNode.removeChild(el);
+    render();
+  }
+}
 // Hold the very first paint until webfonts are ready, so the opening screen
 // doesn't visibly reflow when Newsreader/Inter swap in. Fallback after 2s.
 if(document.fonts&&document.fonts.ready){
